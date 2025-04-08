@@ -1,63 +1,61 @@
-<!DOCTYPE html>
-<html lang="ko">
+<!DOCTYPE html><html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>LPC7 카지노 데모</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #111;
-      color: white;
-      text-align: center;
-      padding: 30px;
-    }
-    h1 {
-      margin-bottom: 40px;
-    }
-    .game-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
-      max-width: 600px;
-      margin: auto;
-    }
-    .game {
-      border: 2px solid #555;
-      border-radius: 10px;
-      padding: 20px;
-      background-color: #222;
-      transition: 0.3s;
-    }
-    .game:hover {
-      border-color: #00ffcc;
-      transform: scale(1.03);
-    }
-    .game a {
-      text-decoration: none;
-      color: white;
-      font-size: 18px;
-    }
+    body { background-color: #111; color: #fff; font-family: sans-serif; padding: 20px; }
+    h1, h2, h3 { color: #00e6e6; }
+    button { padding: 10px; margin: 5px; background: #222; color: #00e6e6; border: 1px solid #00e6e6; cursor: pointer; }
+    input { padding: 5px; margin: 5px; background: #222; color: #fff; border: 1px solid #444; }
+    form { margin-bottom: 20px; }
   </style>
 </head>
 <body>
-  <h1>LPC7 카지노 데모</h1>
-  <div class="game-grid">
-    <div class="game"><a href="games/baccarat.html">바카라</a></div>
-    <div class="game"><a href="games/roulette.html">룰렛</a></div>
-    <div class="game"><a href="games/blackjack.html">블랙잭</a></div>
-    <div class="game"><a href="games/dragontiger.html">드래곤 타이거</a></div>
-    <div class="game"><a href="games/slot.html">슬롯머신</a></div>
-    <div class="game"><a href="games/texasholdem.html">텍사스 홀덤</a></div>
-  </div>
+  <header>
+    <h1>환영합니다! LPC7 카지노 데모</h1>
+    <nav>
+      <ul>
+        <li><a href="#">바카라</a></li>
+        <li><a href="#">룰렛</a></li>
+        <li><a href="#">홀덤</a></li>
+      </ul>
+    </nav>
+  </header>  <main>
+    <p>이 페이지는 카지노 플랫폼 데모입니다. 실제 게임은 곧 구현될 예정입니다.</p><h2>1. 배당 입력</h2>
+<form id="odds-form">
+  <label>바카라 배당: <input type="text" id="baccarat-odds" value="1.95"></label><br>
+  <label>룰렛 배당: <input type="text" id="roulette-odds" value="2.00"></label><br>
+  <label>홀덤 배당: <input type="text" id="holdem-odds" value="1.85"></label><br>
+  <button type="button" onclick="applyOdds()">배당 적용</button>
+</form>
 
-  <script>
+<div id="odds-display"></div>
+
+<h2>2. 게임 데모</h2>
+<button onclick="alert('바카라 게임은 곧 구현됩니다.')">[DEMO] 바카라 실행</button>
+<button onclick="alert('룰렛 게임은 곧 구현됩니다.')">[DEMO] 룰렛 실행</button>
+<button onclick="alert('홀덤 게임은 곧 구현됩니다.')">[DEMO] 홀덤 실행</button>
+
+  </main>  <script>
     const password = "LPC7only";
     const input = prompt("접근 권한이 필요합니다. 비밀번호를 입력하세요:");
     if (input !== password) {
-      document.body.innerHTML = "<h2 style='margin-top:100px;'>접근이 거부되었습니다.</h2>";
+      document.body.innerHTML = "<h2 style='text-align:center;margin-top:100px;'>접근이 거부되었습니다.</h2>";
     }
-  </script>
-</body>
+
+    function applyOdds() {
+      const baccarat = document.getElementById("baccarat-odds").value;
+      const roulette = document.getElementById("roulette-odds").value;
+      const holdem = document.getElementById("holdem-odds").value;
+
+      const resultHTML = `
+        <h3>적용된 배당</h3>
+        <p>바카라: ${baccarat}</p>
+        <p>룰렛: ${roulette}</p>
+        <p>홀덤: ${holdem}</p>
+      `;
+      document.getElementById("odds-display").innerHTML = resultHTML;
+    }
+  </script></body>
 </html>
