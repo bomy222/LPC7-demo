@@ -1,34 +1,63 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LPC7 카지노 데모</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script>
-    const password = "LPC7only"; // 비밀번호 설정
-    const input = prompt("접근 권한이 필요합니다. 비밀번호를 입력하세요:");
-
-    if (input !== password) {
-      document.body.innerHTML = "<h2 style='text-align:center;margin-top:100px;'>접근이 거부되었습니다.</h2>";
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: white;
+      text-align: center;
+      padding: 30px;
     }
-  </script>
+    h1 {
+      margin-bottom: 40px;
+    }
+    .game-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+    .game {
+      border: 2px solid #555;
+      border-radius: 10px;
+      padding: 20px;
+      background-color: #222;
+      transition: 0.3s;
+    }
+    .game:hover {
+      border-color: #00ffcc;
+      transform: scale(1.03);
+    }
+    .game a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>환영합니다! LPC7 카지노 데모</h1>
-    <nav>
-      <ul>
-        <li><a href="#">바카라</a></li>
-        <li><a href="#">룰렛</a></li>
-        <li><a href="#">홀덤</a></li>
-      </ul>
-    </nav>
-  </header>
+  <h1>LPC7 카지노 데모</h1>
+  <div class="game-grid">
+    <div class="game"><a href="games/baccarat.html">바카라</a></div>
+    <div class="game"><a href="games/roulette.html">룰렛</a></div>
+    <div class="game"><a href="games/blackjack.html">블랙잭</a></div>
+    <div class="game"><a href="games/dragontiger.html">드래곤 타이거</a></div>
+    <div class="game"><a href="games/slot.html">슬롯머신</a></div>
+    <div class="game"><a href="games/texasholdem.html">텍사스 홀덤</a></div>
+  </div>
 
-  <main>
-    <p>이 페이지는 카지노 플랫폼 데모입니다. 실제 게임은 아직 구현되지 않았습니다.</p>
-  </main>
-
-  <script src="js/main.js"></script>
+  <script>
+    const password = "LPC7only";
+    const input = prompt("접근 권한이 필요합니다. 비밀번호를 입력하세요:");
+    if (input !== password) {
+      document.body.innerHTML = "<h2 style='margin-top:100px;'>접근이 거부되었습니다.</h2>";
+    }
+  </script>
 </body>
 </html>
